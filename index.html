@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>transit</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="./main.css">
+  <script src='./script.js'>
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7aaXPnH_pMwVB6jl1RzzBM34CczRHRp4"
+    async defer></script>
+</head>
+
+<body>
+
+  <!-- header -->
+  <header class="teal lighten-2  white-text">
+    <h3>transit</h3>
+  </header>
+
+  <!-- top picture of subay station -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="./images/tram.jpg"></div>
+  </div>
+
+  <!-- main seciton -->
+  <div class="section">
+    <div class="main container">
+
+      <!-- left side -->
+
+
+          <!-- start input -->
+          <div class="row">
+            <div class="input-field col s6 m6">
+              <input id="start" type="text" class="validate">
+              <label for="start">Start</label>
+            </div>
+            <!-- end input -->
+            <div class="input-field col s6 m6">
+              <input id="end" type="text" class="validate">
+              <label for="end">End</label>
+            </div>
+          </div>
+
+
+
+          <!-- select input -->
+          <div class="row">
+            <div class="input-field col s6 m6">
+              <select id="modeOfTrans" multiple>
+                <option value="" disabled selected>All</option>
+                <option value="tram">Tram</option>
+                <option value="metro">Metro</option>
+                <option value="rail">Rail</option>
+                <option value="bus">Bus</option>
+                <option value="ferry">Ferry</option>
+                <option value="cablecar">Cablecar</option>
+                <option value="gondola">Gondola</option>
+                <option value="funicular">Funicular</option>
+              </select>
+              <label>Mode of Transportation</label>
+            </div>
+            <!-- button -->
+            <div class="col s6 m6">
+              <a id="submit" class="waves-effect waves-light btn">Submit</a>
+            </div>
+          </div>
+
+
+
+        <!-- right side/ output display -->
+        <div class="row">
+        <div class="col s6 m6">
+          <div id="rightSide" class="row">
+
+          </div>
+          <div id="myOptions" class="scroll row">
+
+          </div>
+        </div>
+        <!-- map -->
+        <div class="col s6 m6">
+              <div id="map"></div>
+        </div>
+      </div>
+
+      </div>
+
+  </div>
+
+  <!-- bottom picture of subway station -->
+  <div class="parallax-container valign-wrapper">
+    <div class="parallax"><img src="./images/map2.jpg">
+
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="teal lighten-2  white-text">
+    <div class="footer-copyright ">
+      &copy 2017 transit
+    </div>
+  </footer>
+
+</body>
+
+</html>
