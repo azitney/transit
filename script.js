@@ -6,6 +6,9 @@ $(document).ready(function() {
 
 
   $('#submit').click(function() {
+    $(`#rightSide`).empty();
+    $(`#myOptions`).empty();
+    $(`#map`).empty();
     //initiliaze strt and end address strings and transportation mode from input
     let start = document.getElementById('start').value.replace(/ /g, "+");
     let end = document.getElementById('end').value.replace(/ /g, "+");
@@ -72,7 +75,6 @@ $(document).ready(function() {
       $.get(`https://transit.land/api/v1/stops?lat=${endLat}&lon=${endLng}&r=600`, function(endStops) {
 
         endStopsCheck.push(endStops.stops.length);
-        console.log(startStopsCheck);
         for (let i = 0; i < endStops.stops.length; i++) {
           if ((modeOfTrans.length > 0) && (modeOfTrans.includes(endStops.stops[i].served_by_vehicle_types[0]))) {
             createEndObjArray(i, endStops);
@@ -85,7 +87,6 @@ $(document).ready(function() {
         // call function to filter array to only contain stops with end points and ending location
         let filterArrStartStops = filterStartArray(initialArrStartStops, initialArrEndStops);
         //call to list out lists
-        console.log(startStopsCheck);
         listOutStart(filterArrStartStops, initialArrEndStops, startStopsCheck, endStopsCheck);
         //call to map out stops
         initMap(startLat, startLng, filterArrStartStops, 15, 'yes');
@@ -326,23 +327,42 @@ function initMap(lat, lng, arr, zoom, addressPin) {
 
 //final result function
 function results(startObj, endObj) {
+  let arr = []
+  for(let i = 0; i < startObj.routeNames.length; i++){
+    if(endObj.routeNames.includes(startObj.routeNames[i])){
+      arr.push(" "+startObj.routeNames[i])
+    }
+  }
+
+  for(let i = 0; i < endObj.routeNames.length; i++){
+    if((startObj.routeNames.includes(endObj.routeNames[i])) && !(arr.includes(" "+endObj.routeNames[i]))){
+      arr.push(" "+endObj.routeNames[i]);
+     }
+   }
+
+  let routeStr = arr.toString(', ');
+
+
   let h3 = document.createElement('h3');
   let h5 = document.createElement('h5');
   let p = document.createElement('p');
-  let p1 = document.createElement('p1');
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
   $(h3).append("Get On At:");
   $(h5).append(startObj.name);
   $(p).append(startObj.operator);
   $(p1).append(startObj.mode);
+  $(p2).append("Servicing routes:" + routeStr);
   $(`#rightSide`).append(h3);
   $(`#rightSide`).append(h5);
   $(`#rightSide`).append(p);
   $(`#rightSide`).append(p1);
+  $(`#rightSide`).append(p2);
 
   let h3end = document.createElement('h3')
   let h5end = document.createElement('h5');
   let pend = document.createElement('p');
-  let p1end = document.createElement('p1');
+  let p1end = document.createElement('p');
   $(h3end).append("Get Off At:");
   $(h5end).append(endObj.name);
   $(pend).append(endObj.operator);
