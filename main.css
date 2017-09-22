@@ -7,38 +7,34 @@
     flex-direction: column;
   }
 
-/*header{
-    margin: 0;
-    padding-left: 20px;
-    }*/
 .logo-div img{
   height: 150px;
-  width: 120px;
+  width: 140px;
   position: absolute;
 }
 
 header{
-    top: 0px;
-    width: 100%;
-    padding-top: 60px;
-    }
+  top: 0px;
+  width: 100%;
+  padding-top: 50px;
+}
 
 .main{
-      height: 80%;
-      padding-top: 10px;
-    }
+  padding-top: 10px;
+}
 
-    footer{
-      padding-top: 20px;
-      bottom: 0px;
-    }
-    .scroll{
-      overflow-x: scroll;
-      height: 300px;
-    }
-    /* Always set the map height explicitly to define the size of the div
-          * element that contains the map. */
-         #map {
-           height: 300px;
-           margin-top: 50px;
-         }
+footer{
+  padding-top: 20px;
+  bottom: 0px;
+}
+
+.scroll{
+  overflow-x: scroll;
+  height: 300px;
+}
+/* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+#map {
+  height: 300px;
+  margin-top: 50px;
+}
